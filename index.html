@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0056a6">
+    <meta name="description" content="App UNIP - Visualize junções de cursos que compartilham disciplinas">
+    <title>UNIP - Junções de Cursos</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/university.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/96/000000/university.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">
+            <i class="fas fa-university"></i>
+        </div>
+        <div class="splash-text">UNIP - Junções de Cursos</div>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <i class="fas fa-wifi-slash"></i> Você está offline
+    </div>
+
+    <!-- Install Button -->
+    <button class="install-button" id="installButton">
+        <i class="fas fa-download"></i> Instalar App
+    </button>
+
+    <!-- Main Content -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <div class="logo-text">
+                        <h1>UNIP - Junções de Cursos</h1>
+                        <div class="subtitle">Visualize as turmas que compartilham disciplinas</div>
+                    </div>
+                </div>
+                <div class="total-juncoes" id="totalJuncoes">
+                    Carregando...
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="controls">
+            <div class="filter-group">
+                <label for="filterCurso"><i class="fas fa-graduation-cap"></i> Filtrar por Curso:</label>
+                <select id="filterCurso">
+                    <option value="">Todos os cursos</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="filterDia"><i class="fas fa-calendar-alt"></i> Filtrar por Dia:</label>
+                <select id="filterDia">
+                    <option value="">Todos os dias</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="filterDisciplina"><i class="fas fa-book"></i> Filtrar por Disciplina:</label>
+                <input type="text" id="filterDisciplina" placeholder="Digite o nome da disciplina">
+            </div>
+            
+            <div class="buttons-container">
+                <button class="btn-search" id="btnSearch">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+                <button class="btn-reset" id="btnReset">
+                    <i class="fas fa-redo"></i> Limpar
+                </button>
+            </div>
+        </div>
+
+        <div class="juncoes-container" id="juncoesContainer">
+            <!-- As junções serão inseridas aqui pelo JavaScript -->
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
