@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - Atualizado com turno selector */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +11,8 @@
     --primary-dark: #003d75;
     --accent: #ff6b00;
     --accent-light: #ff8b33;
+    --manha: #4CAF50;
+    --noite: #2196F3;
     --text: #333;
     --text-light: #666;
     --light: #fff;
@@ -132,6 +134,49 @@ header {
     white-space: nowrap;
 }
 
+/* Turno Selector */
+.turno-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-light);
+}
+
+.turno-btn {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.turno-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.turno-btn[data-turno="manha"]:hover:not(.active) {
+    border-color: var(--manha);
+    color: var(--manha);
+}
+
+.turno-btn[data-turno="noite"]:hover:not(.active) {
+    border-color: var(--noite);
+    color: var(--noite);
+}
+
 /* Controls */
 .controls {
     background-color: var(--light);
@@ -139,17 +184,14 @@ header {
     padding: 20px;
     box-shadow: var(--shadow-light);
     margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
-    align-items: center;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-width: 200px;
 }
 
 .filter-group label {
@@ -189,8 +231,8 @@ select:focus, input:focus {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex: 1;
     justify-content: center;
+    grid-column: span 2;
 }
 
 .btn-search:hover {
@@ -207,11 +249,11 @@ select:focus, input:focus {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s;
-    flex: 1;
-    justify-content: center;
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-content: center;
+    grid-column: span 2;
 }
 
 .btn-reset:hover {
@@ -219,9 +261,7 @@ select:focus, input:focus {
 }
 
 .buttons-container {
-    display: flex;
-    gap: 10px;
-    width: 100%;
+    display: contents;
 }
 
 /* Junções Container */
@@ -241,12 +281,41 @@ select:focus, input:focus {
     display: flex;
     flex-direction: column;
     border: 2px solid transparent;
+    position: relative;
 }
 
 .juncao-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
     border-color: var(--primary);
+}
+
+.juncao-card.manha::before {
+    content: 'MANHÃ';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--manha);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.juncao-card.noite::before {
+    content: 'NOITE';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--noite);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 1;
 }
 
 .card-header {
@@ -440,13 +509,16 @@ select:focus, input:focus {
         grid-template-columns: 1fr;
     }
     
-    .controls {
+    .turno-selector {
         flex-direction: column;
-        align-items: stretch;
     }
     
-    .filter-group {
-        min-width: 100%;
+    .controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-search, .btn-reset {
+        grid-column: 1;
     }
     
     .install-button {

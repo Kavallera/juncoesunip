@@ -56,23 +56,45 @@
     </header>
 
     <main class="container">
+        <!-- Turno Selector -->
+        <div class="turno-selector">
+            <button class="turno-btn active" data-turno="todos">
+                <i class="fas fa-clock"></i> Todos os Turnos
+            </button>
+            <button class="turno-btn" data-turno="manha">
+                <i class="fas fa-sun"></i> Período Matutino
+            </button>
+            <button class="turno-btn" data-turno="noite">
+                <i class="fas fa-moon"></i> Período Noturno
+            </button>
+        </div>
+
         <div class="controls">
             <div class="filter-group">
-                <label for="filterCurso"><i class="fas fa-graduation-cap"></i> Filtrar por Curso:</label>
+                <label for="filterTurno"><i class="fas fa-clock"></i> Turno:</label>
+                <select id="filterTurno">
+                    <option value="">Todos os turnos</option>
+                    <option value="manha">Manhã</option>
+                    <option value="noite">Noite</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="filterCurso"><i class="fas fa-graduation-cap"></i> Curso:</label>
                 <select id="filterCurso">
                     <option value="">Todos os cursos</option>
                 </select>
             </div>
             
             <div class="filter-group">
-                <label for="filterDia"><i class="fas fa-calendar-alt"></i> Filtrar por Dia:</label>
+                <label for="filterDia"><i class="fas fa-calendar-alt"></i> Dia:</label>
                 <select id="filterDia">
                     <option value="">Todos os dias</option>
                 </select>
             </div>
             
             <div class="filter-group">
-                <label for="filterDisciplina"><i class="fas fa-book"></i> Filtrar por Disciplina:</label>
+                <label for="filterDisciplina"><i class="fas fa-book"></i> Disciplina:</label>
                 <input type="text" id="filterDisciplina" placeholder="Digite o nome da disciplina">
             </div>
             
